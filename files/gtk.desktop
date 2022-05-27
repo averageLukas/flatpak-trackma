@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Trackma (GTK)
+Exec=trackma-gtk
+Type=Application
+Icon=com.github.z411.Trackma.Gtk
+Categories=Utility;
+

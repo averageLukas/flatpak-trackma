@@ -1,0 +1,31 @@
+app-id: com.github.z411.Trackma.Gtk
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: trackma-gtk
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --share=network
+modules:
+  - python3-gtk-modules.json
+
+  - name: trackma
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app --no-deps .
+    sources:
+      - type: git
+        url: https://github.com/z411/trackma.git
+
+  - name: desktop
+    buildsystem: simple
+    build-commands:
+      - install -D icon.png /app/share/icons/hicolor/96x96/apps/com.github.z411.Trackma.Gtk.png
+      - install -D gtk.desktop /app/share/applications/com.github.z411.Trackma.Gtk.desktop
+    sources:
+      - type: file
+        path: files/icon.png
+      - type: file
+        path: files/gtk.desktop
+
